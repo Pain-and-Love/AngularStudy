@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>controller2</title>
+</head>
+<body>  
+	<table ng-app='newModule' ng-controller='newController'>
+		<tr>
+			<td>用户名</td>
+			<td> <input type="text" ng-model="user.username"> </td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td><input type="password" ng-model="user.password"></td>
+		</tr>
+		<tr>
+			<td><button ng-click="login()">登录</button></td>
+		</tr>
+		<tr>
+		<td>
+			{{message}}
+		</td>
+		</tr>
+	</table>
+	<script src="angular.min.js"></script>
+	<script>
+		//创建一个模块
+		var app=angular.module('newModule',[]);
+		//为这个模块创建一个控制器
+		app.controller('newController',['$scope',function($scope){
+			//新建数据模型中的用户信息数据,它是双向数据同步的
+			$scope.user={
+				"username":"",
+				"password":""
+			};
+			//取决于$scope.user.username的变化
+			$scope.message="请输入用户名...";
+			//官方API中的$watch方法
+			$scope.$watch('user.username',function(now,old){
+				console.log("当前值是: "+now+',原来的值是 :'+old);
+				if(now) {
+					if(now.length<7)
+					$scope.message="用户名不合法";
+					if(now.length>=7)
+					$scope.message=" ";
+				}
+				else {
+					$scope.message="请输入用户名";
+				}
+
+				
+			});
+			//数据模型中的方法
+			$scope.login=function(){
+				console.log("开始验证用户名和密码...");
+				// 直接用$scope建立的数据模型就可以了,那么view上的数据变化 $scope中的user对象也会相应改变
+				console.log($scope.user);
+			}
+			// angular 基本不用操作dom 如果必要 可以使用ng自带的jqlite
+		}]);
+	</script>
+</body>
+</html>

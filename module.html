@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular module(模块)</title>
+</head>
+<body > 
+<div ng-app="myApp" ng-controller="DemoController"><!--ng-app就表示交给哪一个模块去管理,ng-controller就表示交给哪一个控制器去管理    -->
+	<h1>使用NG实现双边数据绑定</h1>
+	<p><input type="text" placeholder="请输入姓名" ng-model='user.name' name="username"></p>
+	<p>hello <strong>{{user.name}}</strong></p>
+	<button ng-click='show()'></button>
+</div> 
+	
+
+
+
+
+
+	<script src="angular.min.js"></script>
+	<script>
+	//注册模块  通过module函数,第一个参数是这个模块的名字
+	//第二个参数 是这个模块所依赖的模块,即使不依赖任何模块,也得传递一个空数组
+	//不然的话,岂不是变成了获取某一个某块？？
+	var app=angular.module('myApp',[]);
+	//这样,我们就可以自己处理这一个创建的模块
+	app.controller('DemoController',function($scope){
+ 		$scope.user={};
+ 		$scope.user.name='张三~';
+ 	//$scope不仅仅可以往视图中暴露数据,还可以暴露方法
+ 		$scope.show=function(){
+ 			console.log($scope.user);
+ 		};
+	});
+	//该方法用于创建一个对应模块的控制器,后面的函数是执行控制器的时候会执行的函数
+	//这个函数就叫做 控制器函数,它的参数 必须叫做 $scope  (就是数据模型的那个存贮空间)
+	</script>
+</body>
+</html>

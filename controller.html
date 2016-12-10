@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>controller</title>
+</head>
+<body ng-app="myModule" ng-controller="MyController">
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript">
+		//由于控制器必须是出现在某个模块下,我们想创建一个控制器必须先创建模块
+		var module=angular.module('myModule',[]);
+		//再次强调 这个函数的参数必须叫做$scope或者别的,因为它根据不同的参数会自动注入不同的对象
+		//module.controller('MyController',function($scope){console.log($scope);}); 
+
+		//但是这时候有个问题,如果需要代码简化 那么这个$scope也会被简化,所以 一般采用下面这种方法写
+		module.controller("MyController",["$scope","$http",function($scope,$http){
+				console.log($scope);  //就算被压缩了，依然可以从前面的字符串中取得
+				
+		}]);
+	</script>
+</body>
+</html>
