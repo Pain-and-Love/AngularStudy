@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat</title>
+	<style type="text/css">
+		.red{
+			color:red;
+		}
+		.aqua{
+			color:aqua;
+		}
+	</style>
+</head>
+<body >
+
+<table ng-app='myApp1' ng-controller="myController">
+	<tr  ng-repeat="item in data" data-id="{{item.id}}" >
+	<td>{{$first?"第一条":""}}</td>
+	<td>{{item.name}}</td>
+	<td>{{item.age}}</td>
+	<td>{{item.age}}</td>
+	<td>{{$last?"没有了":""}}</td>
+	</tr>
+</table>
+	<script src="../angular.min.js"></script>
+	<script>
+		var myApp=angular.module('myApp1',[]);
+		myApp.controller('myController',['$scope',function($scope){
+			$scope.data=[];
+			for(var i=1;i<10;i++){
+				$scope.data[$scope.data.length]={
+					id:i,
+					name:'小明'+i,
+					age:20+i
+				};
+			};
+			console.log($scope.data);
+		}]);
+	</script>
+</body>
+</html>

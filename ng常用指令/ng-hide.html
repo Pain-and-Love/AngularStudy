@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-hide</title>
+	<style type="text/css">
+		.tips{
+			position: absolute;
+			top:0;
+			left:0;
+			bottom: 0;
+			right:0;
+			background-color: rgba(100,100,100,.7);
+			font-size: 36px;
+			text-align: center;
+			line-height: 100vh;
+		}
+	</style>
+</head>
+<body ng-app='myApp' ng-controller='my'>
+<div class="tips" ng-show="loading">Loading...</div>
+<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	<script src="../angular.min.js"></script>
+	<script>
+		angular.module('myApp',[]).controller('my',["$scope","$timeout",function($scope,$timeout){
+			$scope.loading=true;
+			$timeout(function(){
+				$scope.loading=false;
+				$timeout(function(){
+					$scope.loading=true;
+				},3000);
+			},3000);
+		}])
+	</script>
+</body>
+</html>

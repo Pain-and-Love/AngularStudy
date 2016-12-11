@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class</title>
+		<style type="text/css">
+		.red{
+			color:red;
+		}
+		.aqua{
+			color:aqua;
+		}
+	</style>
+</head>
+<body>
+<table ng-app="myTable" ng-controller="tableController">
+<!-- ng-class会根据当前设置对象的属性和属性值来决定是否添加特定类名 -->
+	<tr ng-repeat="item in data " data-id="{{item.id}}" ng-class="{red:$even,aqua:$odd}">
+		<td>{{item.name}}</td>
+		<td>{{item.sex}}</td>
+		<td>{{item.age}}</td>
+	</tr>
+</table>
+	<script src="../angular.min.js"></script>
+	<script>
+		var app=angular.module('myTable',[]);
+		app.controller('tableController',["$scope",function($scope){
+			$scope.data=[];
+			for(i=0;i<10;i++){
+				$scope.data.push({
+					id:i,
+					name:"小明"+i+'号',
+					age:18+i+'岁'
+				});
+			}
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-xxx</title>
+</head>
+<body ng-app='myApp0'>
+	<input type="text" ng-model='user'>
+	<input type="button" ng-click='do()'>
+	<div ng-app="myApp1" ng-controller="App1Controller">
+		<input type="button" value="按钮1" ng-click="do1()">
+	</div>
+	<div ng-app="myApp2" ng-controller="App2Controller">
+		<input type="button" value="按钮2" ng-click="do2()">
+	</div>
+	<script type="text/javascript" src="../angular.min.js"></script>
+	<script type="text/javascript">
+		var myApp1=angular.module('myApp1',[]);
+		myApp1.controller("App1Controller",["$scope",function($scope){
+			$scope.do1=function(){
+				console.log(111);
+			}
+		}]);
+
+		var myApp2=angular.module('myApp2',[]);
+		myApp2.controller("App2Controller",["$scope",function($scope){
+			$scope.do2=function(){
+				console.log(222);
+			}
+		}]);
+		//手动的让第二个Div被myApp2管理
+		// angular.bootstrap(document.querySelector('[ng-app="myApp2"]'),['myApp2']);
+		//或者用一个ng-app来依赖这两个ng-app
+		angular.module('myApp0',['myApp1','myApp2']);
+	</script>
+</body>
+</html>

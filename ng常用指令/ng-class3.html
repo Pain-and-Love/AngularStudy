@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class3 数组中的重复元素+过滤</title>
+	<style type="text/css">
+		.red{
+			color: red
+		}s
+	</style>
+</head>
+<body ng-app='myApp' ng-controller='myController'>
+	<ul >
+		<li ng-repeat="names in data track by $index" ng-class={"red":key1&&names.startsWith(key1)}>{{names}}</li>
+	</ul>
+	<input type="text" ng-model='key1'>
+	<script src="../angular.min.js"></script>
+	<script>
+		var myApp=angular.module('myApp',[]);
+		myApp.controller('myController',["$scope",function($scope){
+			$scope.data=['赵四','王五','赵四','李云龙','李大力','王小二'];
+		}]);
+	</script>
+</body>
+</html>

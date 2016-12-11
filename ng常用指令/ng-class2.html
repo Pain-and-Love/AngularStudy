@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class2</title>
+	<style type="text/css">
+		.red{
+			background-color:red;
+		}
+		.aqua{
+			background-color:aqua;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			transition: background-color .4s linear;
+		}
+	</style>
+</head>
+<body ng-app='myApp' ng-controller='myController'>
+<select ng-model='aaa'>
+	<option value="red">红</option>
+	<option value="aqua">青</option>
+</select>
+<div ng-class="{'red':aaa=='red','aqua':aaa==='aqua'}">
+	
+</div>
+	<script src="../angular.min.js"></script>	
+	<script>
+		var myApp=angular.module('myApp',[]);
+		myApp.controller('myController',["$scope",function($scope){
+			
+		}]);
+	</script>
+</body>
+</html>

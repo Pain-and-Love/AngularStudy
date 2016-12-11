@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>ng-switch</title>
+	</head>
+	<body ng-app >
+	<select ng-model='choice'>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+	<div ng-switch='choice'>
+	<p ng-switch-when='1'>one</p>
+	<p ng-switch-when='2'>two</p>
+	<p ng-switch-when='3'>three</p>
+	<p ng-switch-default>what's your choice?</p>
+	</div>
+	<script src="../angular.min.js"></script>	
+	</body>
+	</html>	

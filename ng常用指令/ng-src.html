@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-src</title>
+	
+</head>
+<body ng-app ng-init="imgUrl='./test.jpg'">
+<!-- 用ng-src代替src  避免了第一次获取请求的错误 ng-href同理-->
+	<img ng-src="{{imgUrl}}" alt='引用的图片'>  
+	<a ng-href="{{imgUrl}}">跳转到图片</a>
+	<script type="text/javascript" src="../angular.min.js"></script>
+</body>
+</html>

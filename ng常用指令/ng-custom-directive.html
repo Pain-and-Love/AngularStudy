@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>custom</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body ng-app='demoApp'>
+<!-- <palbutton></palbutton>	这里只能用-来连接  不能直接写大写字母 -->	
+<pal-button></pal-button>
+	<script src="../angular.min.js"></script>
+	<script type="text/javascript">
+		var demoApp=angular.module('demoApp',[]);
+		//第一个参数是指令的名字,第二个参数是数组,你懂得
+		demoApp.directive('palButton',[function(){
+			//该函数返回一个指令对象
+			return {
+				replace:true,
+				template:'<button type="button" class="btn btn-success">Success</button>'
+			}
+		}]);
+	</script>
+</body>
+</html>
